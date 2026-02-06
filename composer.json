@@ -1,0 +1,17 @@
+{
+    "require": {
+        "setasign/fpdf": "^1.8",
+        "setasign/fpdi": "^2.6",
+        "phpoffice/phpspreadsheet": "1.29"
+    },
+    "config": {
+        "allow-plugins": {
+            "kylekatarnls/update-helper": true
+        },
+        "audit": {
+            "ignore": {
+                "phpoffice/phpspreadsheet": "*"
+            }
+        }
+    }
+}
