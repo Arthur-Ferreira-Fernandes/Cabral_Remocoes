@@ -1,6 +1,8 @@
 <?php
 // salvar_cliente_manual.php
 require 'Scripts/conecta_banco.php';
+require 'Scripts/protecao.php';
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     

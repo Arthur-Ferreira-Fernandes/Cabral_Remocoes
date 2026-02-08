@@ -1,5 +1,8 @@
 <?php
+
 require 'Scripts/conecta_banco.php';
+require 'Scripts/protecao.php';
+
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];

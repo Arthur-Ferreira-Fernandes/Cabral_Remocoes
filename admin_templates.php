@@ -1,5 +1,6 @@
 <?php
 require 'Scripts/conecta_banco.php';
+require 'Scripts/protecao.php';
 
 $mensagem = '';
 

@@ -1,6 +1,7 @@
 <?php
 require 'Scripts/conecta_banco.php';
 require 'vendor/autoload.php';
+require 'Scripts/protecao.php';
 
 use setasign\Fpdi\Fpdi;
 
@@ -198,7 +199,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['gerar_pdf'])) {
             </div>
             <div class="card-body">
                 
-                <form method="GET" action="gerar_oracamento.php" class="mb-4">
+                <form method="GET" action="gerar_orcamento.php" class="mb-4">
                     <label class="form-label fw-bold">1. Selecione o Modelo</label>
                     <select name="template_id" class="form-select form-select-lg" onchange="this.form.submit()">
                         <option value="">Selecione...</option>
@@ -276,7 +277,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['gerar_pdf'])) {
             const tbody = document.querySelector('#tabela-itens tbody');
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td><input type="text" name="itens[${itemIndex}][nome]" class="form-control" placeholder = "Ex: Ambulância Básica"></td>
+                <td><input type="text" name="itens[${itemIndex}][nome]" class="form-control" placeholder = "Ex: Ambulância Básica" required></td>
                 <td><input type="text" name="itens[${itemIndex}][qtd]" class="form-control text-center" placeholder="Ex: 30 Dias" ></td>
                 <td><input type="text" name="itens[${itemIndex}][unidade]" class="form-control text-center" placeholder="4 Saidas"></td>
                 <td><input type="text" name="itens[${itemIndex}][preco]" class="form-control text-end" onkeyup="mascaraMoeda(this)" placeholder = "R$250,00"></td>

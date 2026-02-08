@@ -2,6 +2,8 @@
 // gerar_contrato.php
 require 'Scripts/conecta_banco.php';
 require 'vendor/autoload.php';
+require 'Scripts/protecao.php';
+
 
 use PhpOffice\PhpWord\TemplateProcessor;
 use PhpOffice\PhpWord\IOFactory;

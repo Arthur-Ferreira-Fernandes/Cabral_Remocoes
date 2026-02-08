@@ -1,6 +1,7 @@
 <?php
 // clientes.php
 require 'Scripts/conecta_banco.php';
+require 'Scripts/protecao.php';
 include 'navbar.php';
 
 // --- CONFIGURAÇÃO DO SEU GRUPO ---

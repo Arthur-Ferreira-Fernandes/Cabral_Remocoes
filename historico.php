@@ -1,6 +1,7 @@
 <?php
 // historico.php
 require 'Scripts/conecta_banco.php';
+require 'Scripts/protecao.php';
 
 // --- CONFIGURAÇÃO DOS FILTROS ---
 $busca     = $_GET['busca'] ?? '';

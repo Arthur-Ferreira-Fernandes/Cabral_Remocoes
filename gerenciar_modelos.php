@@ -1,6 +1,7 @@
 <?php
 // gerenciar_modelos.php
 require 'Scripts/conecta_banco.php';
+require 'Scripts/protecao.php';
 
 // --- Lógica de Exclusão (PDF - ORÇAMENTOS) ---
 if (isset($_GET['excluir_pdf_id'])) {

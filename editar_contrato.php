@@ -1,6 +1,8 @@
 <?php
 // editar_contrato.php
 require 'Scripts/conecta_banco.php';
+require 'Scripts/protecao.php';
+
 
 $id = $_GET['id'] ?? null;
 if (!$id) {

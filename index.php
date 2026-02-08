@@ -1,5 +1,6 @@
 <?php
-// index.php - Dashboard Inicial
+require 'Scripts/protecao.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
