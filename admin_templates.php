@@ -56,23 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 </head>
 <body class="bg-light">
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-    <div class="container">
-        <a class="navbar-brand" href="#">Cabral Remoções</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <div class="navbar-nav">
-                <a class="nav-link" href="index.php">Gerar PDF</a>
-                <a class="nav-link" href="admin_templates.php">Criar Novo Modelo</a>
-                <a class="nav-link" href="gerenciar_modelos.php">Gerenciar / Editar</a>
-                <a class="nav-link" href="historico.php">Histórico</a>
-            </div>
-        </div>
-    </div>
-</nav>
+    <?php include 'navbar.php'; ?>
 
     <div class="container py-4">
         <div class="row justify-content-center">

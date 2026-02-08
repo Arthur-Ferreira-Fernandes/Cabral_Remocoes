@@ -78,15 +78,7 @@ $listaCampos = $campos->fetchAll();
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 </head>
 <body class="bg-light">
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-        <div class="container">
-            <a class="navbar-brand" href="#">Cabral Remoções</a>
-            <div class="navbar-nav">
-                <a class="nav-link" href="gerenciar_modelos.php">Voltar</a>
-            </div>
-        </div>
-    </nav>
+    <?php include 'navbar.php'; ?>
 
     <div class="container pb-5">
         <div class="row justify-content-center">

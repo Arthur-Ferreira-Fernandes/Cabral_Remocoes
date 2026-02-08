@@ -2,7 +2,9 @@
     "require": {
         "setasign/fpdf": "^1.8",
         "setasign/fpdi": "^2.6",
-        "phpoffice/phpspreadsheet": "1.29"
+        "phpoffice/phpspreadsheet": "1.29",
+        "phpoffice/phpword": "^1.4",
+        "dompdf/dompdf": "^3.1"
     },
     "config": {
         "allow-plugins": {
