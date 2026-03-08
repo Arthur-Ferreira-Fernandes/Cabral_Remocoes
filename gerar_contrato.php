@@ -4,6 +4,10 @@ require 'Scripts/conecta_banco.php';
 require 'vendor/autoload.php';
 require 'Scripts/protecao.php';
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 
 use PhpOffice\PhpWord\TemplateProcessor;
 use PhpOffice\PhpWord\IOFactory;
@@ -12,6 +16,13 @@ use PhpOffice\PhpWord\Settings;
 // --- CONFIGURAÇÃO DOMPDF ---
 Settings::setPdfRendererName(Settings::PDF_RENDERER_DOMPDF);
 Settings::setPdfRendererPath(__DIR__ . '/vendor/dompdf/dompdf');
+
+$pastaTemp = __DIR__ . '/arquivos/temp';
+if (!is_dir($pastaTemp)) {
+    mkdir($pastaTemp, 0777, true);
+}
+Settings::setTempDir($pastaTemp);
+// ==========================================
 
 $idSelecionado = $_GET['id_modelo'] ?? null;
 $campos = [];
@@ -215,7 +226,63 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $idSelecionado && $modelo) {
             </div>
         </div>
     </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+<script src="https://unpkg.com/imask"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Pega todos os campos de texto da tela
+    const inputs = document.querySelectorAll('input[type="text"]');
+
+    inputs.forEach(function(input) {
+        // Pega o nome da variável (ex: cam_cpf) e o texto da etiqueta acima dele
+        const name = input.name.toLowerCase();
+        const label = input.previousElementSibling ? input.previousElementSibling.innerText.toLowerCase() : '';
+        
+        // Junta os dois para o sistema procurar as palavras-chave
+        const identificador = name + " " + label;
+
+        // 📱 TELEFONE / CELULAR / WHATSAPP
+        if (identificador.includes('tel') || identificador.includes('cel') || identificador.includes('whats')) {
+            IMask(input, {
+                mask: [
+                    { mask: '(00) 0000-0000' }, // Fixo
+                    { mask: '(00) 00000-0000' } // Celular
+                ]
+            });
+        }
+        // 🆔 CPF
+        else if (identificador.includes('cpf')) {
+            IMask(input, { mask: '000.000.000-00' });
+        }
+        // 🏢 CNPJ
+        else if (identificador.includes('cnpj')) {
+            IMask(input, { mask: '00.000.000/0000-00' });
+        }
+        // 📍 CEP
+        else if (identificador.includes('cep')) {
+            IMask(input, { mask: '00000-000' });
+        }
+        // 📅 DATA
+        else if (identificador.includes('data') || identificador.includes('nascimento')) {
+            IMask(input, { mask: '00/00/0000' });
+        }
+        // 💰 VALOR / DINHEIRO (R$)
+        else if (identificador.includes('valor') || identificador.includes('preco') || identificador.includes('dinheiro') || identificador.includes('total')) {
+            IMask(input, {
+                mask: Number,
+                scale: 2, // 2 casas decimais
+                signed: false,
+                thousandsSeparator: '.',
+                padFractionalZeros: true,
+                normalizeZeros: true,
+                radix: ',' // Vírgula para centavos
+            });
+        }
+    });
+});
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
