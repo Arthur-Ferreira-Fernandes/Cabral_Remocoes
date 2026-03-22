@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 08/03/2026 às 15:45
+-- Host: localhost
+-- Tempo de geração: 22/03/2026 às 16:25
 -- Versão do servidor: 10.4.28-MariaDB
--- Versão do PHP: 8.0.28
+-- Versão do PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,7 +43,8 @@ CREATE TABLE `clientes` (
 INSERT INTO `clientes` (`id`, `nome`, `email`, `telefone`, `created_at`, `updated_at`) VALUES
 (1, 'Arthur Ferreira Fernandes', 'arthur@123.com', '(11) 98659-9562', '2026-02-08 03:48:59', '2026-02-08 03:48:59'),
 (2, 'Sarah Alves Moya Ferreira', 'sarah@123.com', '11998844335', '2026-02-08 03:55:57', '2026-02-08 03:55:57'),
-(4, 'Marina', 'marina@123.com', '(11) 97558-3176', '2026-02-08 04:18:10', '2026-02-08 13:04:35');
+(4, 'Marina', 'marina@123.com', '(11) 97558-3176', '2026-02-08 04:18:10', '2026-02-08 13:04:35'),
+(5, 'Arthur', 'arthur@123.com', '11986599562', '2026-03-08 15:04:49', '2026-03-08 15:04:49');
 
 -- --------------------------------------------------------
 
@@ -66,7 +67,12 @@ INSERT INTO `contratos_campos` (`id`, `contrato_id`, `variavel`, `label`) VALUES
 (21, 5, 'nome_cliente', 'Nome do Cliente'),
 (22, 5, 'Rg', 'Numero RG'),
 (23, 5, 'cpf', 'Numero Cpf'),
-(24, 5, 'Endereco', 'Endereço completo');
+(24, 5, 'Endereco', 'Endereço completo'),
+(26, 7, 'nome_cliente', 'Nome do Cliente'),
+(27, 7, 'Nome_Financeiro', 'Nome do Responsavel Financeiro'),
+(28, 7, 'Cpf_Financeiro', 'CPF do Responsavel Financeiro'),
+(29, 7, 'Telefone_Financeiro', 'Telefone do Responsavel Financeiro'),
+(30, 7, 'Endereco_Financeiro', 'Endereço do Responsavel Financeiro');
 
 -- --------------------------------------------------------
 
@@ -86,7 +92,8 @@ CREATE TABLE `contratos_templates` (
 --
 
 INSERT INTO `contratos_templates` (`id`, `nome_modelo`, `caminho_arquivo`, `created_at`) VALUES
-(5, 'Contrato', 'arquivos/contratos_base/contrato_edit_698808fc55dc3.docx', '2026-02-08 03:46:31');
+(5, 'Contrato', 'arquivos/contratos_base/contrato_edit_698808fc55dc3.docx', '2026-02-08 03:46:31'),
+(7, 'Teste', 'arquivos/contratos_base/contrato_69ad8fda9a00b.docx', '2026-03-08 15:03:54');
 
 -- --------------------------------------------------------
 
@@ -144,15 +151,8 @@ CREATE TABLE `historico_gerado` (
 --
 
 INSERT INTO `historico_gerado` (`id`, `template_id`, `contrato_id`, `nome_cliente`, `caminho_pdf_final`, `created_at`, `valor_total`) VALUES
-(23, 2, NULL, 'ORÇAMENTO PARA PHILIP MORRIS BRASIL', 'arquivos/gerados/doc_1770132895.pdf', '2026-02-03 15:34:55', 0.00),
-(24, 2, NULL, 'Criciuma SC x Taubate', 'arquivos/gerados/doc_1770133157.pdf', '2026-02-03 15:39:17', 0.00),
-(25, 2, NULL, 'ORÇAMENTO PARA PHILIP MORRIS BRASIL', 'arquivos/gerados/doc_1770134332.pdf', '2026-02-03 15:58:52', 0.00),
-(26, 2, NULL, 'ORÇAMENTO PARA PHILIP MORRIS BRASIL', 'arquivos/gerados/doc_1770134676.pdf', '2026-02-03 16:04:36', 1000.00),
-(27, 4, NULL, 'ORÇAMENTO PARA PHILIP MORRIS BRASIL', 'arquivos/gerados/doc_1770134929.pdf', '2026-02-03 16:08:49', 1000.00),
-(29, NULL, 5, 'Arthur Ferreira Fernandes', 'arquivos/gerados/Contrato_20260208_044859_698807ab4d26c.pdf', '2026-02-08 03:48:59', 0.00),
-(30, NULL, 5, 'Arthur Ferreira Fernandes', 'arquivos/gerados/Contrato_20260208_045121_698808397dc45.pdf', '2026-02-08 03:51:21', 0.00),
-(31, NULL, 5, 'Arthur Ferreira Fernandes', 'arquivos/gerados/Contrato_20260208_045453_6988090dd190f.pdf', '2026-02-08 03:54:54', 0.00),
-(32, NULL, 5, 'Sarah Alves Moya Ferreira', 'arquivos/gerados/Contrato_20260208_045557_6988094d6e250.pdf', '2026-02-08 03:55:57', 0.00);
+(36, NULL, 7, 'Arthur', 'arquivos/gerados/Contrato_20260308_160648_69ad90880ced7.pdf', '2026-03-08 15:06:48', 0.00),
+(37, 4, NULL, 'Teste', 'arquivos/gerados/doc_1772982473.pdf', '2026-03-08 15:07:53', 1000.00);
 
 -- --------------------------------------------------------
 
@@ -256,19 +256,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `contratos_campos`
 --
 ALTER TABLE `contratos_campos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de tabela `contratos_templates`
 --
 ALTER TABLE `contratos_templates`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `coordenadas_template`
@@ -280,7 +280,7 @@ ALTER TABLE `coordenadas_template`
 -- AUTO_INCREMENT de tabela `historico_gerado`
 --
 ALTER TABLE `historico_gerado`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de tabela `templates`
